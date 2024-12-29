@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 # HTML template
 HTML_TEMPLATE = """
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,36 +14,61 @@ HTML_TEMPLATE = """
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Web Interpreter</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 20px; 
-            display: flex; 
-            flex-direction: row; 
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-direction: row;
+            background-color: #121212;
+            color: #e0e0e0;
         }
         #editor {
             width: 60%;
             margin-right: 20px;
         }
-        textarea { 
-            width: 100%; 
-            height: 300px; 
-            font-family: monospace; 
+        textarea {
+            width: 95%;
+            height: 300px;
+            font-family: monospace;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border: 1px solid #333;
+            padding: 10px;
+            border-radius: 5px;
         }
-        pre { 
-            background: #f4f4f4; 
-            padding: 10px; 
-            border: 1px solid #ddd; 
+        button {
+            background-color: #333;
+            color: #e0e0e0;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        button:hover {
+            background-color: #444;
+            box-shadow: 0 0 10px 2px #00ff00;
+        }
+        pre {
+            background: #1e1e1e;
+            color: #e0e0e0;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
             overflow: auto;
             height: 300px;
         }
         #output-container {
             width: 40%;
         }
+        h1, h3 {
+            color: #e0e0e0;
+        }
     </style>
 </head>
 <body>
     <div id="editor">
-        <h1>Python Web Interpreter</h1>
+        <h3>Python Web Interpreter</h3>
         <form id="codeForm">
             <textarea id="code" placeholder="Write your Python code here..."></textarea><br>
             <button type="submit">Run Code</button>
@@ -70,6 +96,9 @@ HTML_TEMPLATE = """
     </script>
 </body>
 </html>
+
+
+
 """
 
 @app.route('/')
