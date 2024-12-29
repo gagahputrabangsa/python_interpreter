@@ -72,3 +72,32 @@ HTML_TEMPLATE = """
 </html>
 """
 
+@app.route('/')
+def home():
+    return render_template_string(HTML_TEMPLATE)
+
+@app.route('/run', methods=['POST'])
+def run_code():
+    try:
+        # Capture code from the request
+        code = request.json.get('code', '')
+
+        # Redirect stdout to capture print outputs
+        stdout = io.StringIO()
+        sys.stdout = stdout
+
+        # Execute the code
+        exec(code, {})
+
+        # Get the output
+        output = stdout.getvalue()
+    except Exception as e:
+        output = str(e)
+    finally:
+        # Reset stdout
+        sys.stdout = sys.__stdout__
+
+    return jsonify({ 'output': output })
+
+if __name__ == '__main__':
+    app.run(debug=True)
