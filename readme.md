@@ -12,9 +12,7 @@ python -m venv venv
 This will create virtual env on your working dir<br>
 And before continuing to installing the packages, we must activate the venv using this simple command line:<br>
 Windows:<br>
-```
-./venv/scripts/activate
-```
+``` ./venv/scripts/activate ```
 <br>
 Mac/Linux: <br>
 ```
